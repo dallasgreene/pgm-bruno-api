@@ -1,0 +1,32 @@
+info:
+  name: Create Event Godot Tuesdays
+  type: http
+  seq: 2
+
+http:
+  method: POST
+  url: "{{base-uri}}/guilds/{{guild-id}}/scheduled-events"
+  body:
+    type: json
+    data: |-
+      {
+        "channel_id": "1200214543868108910",
+        "name": "Godot Tuesdays",
+        "privacy_level": 2,
+        "scheduled_start_time": "2026-04-14T20:00:00.000Z",
+        "description": "Are you working in Godot? Are you interested in working in Godot? Hop on the coworking channel Tuesday afternoons for weekly Godot coworking hours. Feel free to ask questions, share resources and show us what you're working on!",
+        "entity_type": 2,
+        "recurrence_rule": {
+          "start": "2026-04-14T20:00:00.000Z",
+          "frequency": 2,
+          "interval": 1,
+          "by_weekday": [1]
+        }
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

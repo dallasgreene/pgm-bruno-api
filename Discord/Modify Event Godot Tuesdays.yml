@@ -1,0 +1,26 @@
+info:
+  name: Modify Event Godot Tuesdays
+  type: http
+  seq: 3
+
+http:
+  method: PATCH
+  url: "{{base-uri}}/guilds/{{guild-id}}/scheduled-events/{{event-id}}"
+  body:
+    type: json
+    data: |-
+      {
+        "name": "Godot Tuesdayssss"
+      }
+  auth: inherit
+
+runtime:
+  variables:
+    - name: event-id
+      value: "1493051704411951274"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

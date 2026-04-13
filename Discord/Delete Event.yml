@@ -1,0 +1,20 @@
+info:
+  name: Delete Event
+  type: http
+  seq: 4
+
+http:
+  method: DELETE
+  url: "{{base-uri}}/guilds/{{guild-id}}/scheduled-events/{{event-id}}"
+  auth: inherit
+
+runtime:
+  variables:
+    - name: event-id
+      value: "1493009925675159623"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

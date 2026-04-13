@@ -1,0 +1,38 @@
+info:
+  name: Create Event
+  type: http
+  seq: 1
+
+http:
+  method: POST
+  url: "{{base-uri}}/guilds/{{guild-id}}/scheduled-events"
+  body:
+    type: json
+    data: |-
+      {
+        "channel_id": "",
+        "entity_metadata": {
+          "location": ""
+        },
+        "name": "",
+        "privacy_level": 2,
+        "scheduled_start_time": "",
+        "scheduled_end_time": "",
+        "description": "",
+        "entity_type": 2,
+        "image": "",
+        "recurrence_rule": {
+          "start": "",
+          "end": "",
+          "frequency": 2,
+          "interval": 1,
+          "by_weekday": [1]
+        }
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
