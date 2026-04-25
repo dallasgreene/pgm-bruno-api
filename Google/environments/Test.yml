@@ -1,0 +1,22 @@
+name: Test
+variables:
+  - name: project-id
+    value: pgm-calendar-automation
+  - name: sa-email
+    value: pgm-calendar-bot@pgm-calendar-automation.iam.gserviceaccount.com
+  - name: auth-uri
+    value: https://accounts.google.com/o/oauth2/auth
+  - name: token-uri
+    value: https://oauth2.googleapis.com/token
+  - name: auth-provider-cert-url
+    value: https://www.googleapis.com/oauth2/v1/certs
+  - name: client-cert-url
+    value: https://www.googleapis.com/robot/v1/metadata/x509/pgm-calendar-bot%40pgm-calendar-automation.iam.gserviceaccount.com
+  - name: client-id
+    value: "{{process.env.client_id}}"
+  - name: private-key
+    value: "{{process.env.private_key}}"
+  - name: private-key-id
+    value: "{{process.env.private_key_id}}"
+  - secret: true
+    name: bot-token
