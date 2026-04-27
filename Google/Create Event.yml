@@ -1,0 +1,31 @@
+info:
+  name: Create Event
+  type: http
+  seq: 1
+
+http:
+  method: POST
+  url: "{{calendar-api-uri}}/calendars/{{calendar-id}}/events"
+  body:
+    type: json
+    data: |-
+      {
+        "start": {
+          "dateTime": "2026-04-29T16:15:00.000+00:00",
+          "timeZone": "America/New_York"
+        },
+        "end": {
+          "dateTime": "2026-04-29T18:15:00.000+00:00",
+          "timeZone": "America/New_York"
+        },
+        "description": "An Example event",
+        "summary": "Example Event!",
+        "colorId": "1"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

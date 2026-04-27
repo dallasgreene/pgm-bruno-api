@@ -1,0 +1,52 @@
+info:
+  name: Get Token
+  type: http
+  seq: 2
+
+http:
+  method: POST
+  url: "{{token-uri}}"
+  body:
+    type: form-urlencoded
+    data:
+      - name: grant_type
+        value: urn:ietf:params:oauth:grant-type:jwt-bearer
+      - name: assertion
+        value: "{{jwt}}"
+
+runtime:
+  variables:
+    - name: jwt
+      value: ""
+  scripts:
+    - type: before-request
+      code: |-
+        const jwt = require('jsonwebtoken');
+
+        const now = Math.floor(Date.now() / 1000);
+
+        const payload = {
+          iss: bru.getEnvVar('sa-email'),
+          scope: 'https://www.googleapis.com/auth/calendar',
+          aud: bru.getEnvVar('token-uri'),
+          exp: now + 3600, // 1 hour
+          iat: now,
+        };
+
+        const jwtNonEncoded = jwt.sign(payload, bru.getEnvVar('private-key'), {
+          algorithm: 'RS256',
+          header: { typ: 'JWT' },
+        });
+
+        bru.setVar('jwt', encodeURIComponent(jwtNonEncoded));
+    - type: after-response
+      code: |-
+        const data = res.getBody();
+        console.log(data);
+        bru.setEnvVar('bot-token', data.access_token);
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

@@ -1,0 +1,35 @@
+info:
+  name: Update Event
+  type: http
+  seq: 5
+
+http:
+  method: PUT
+  url: "{{calendar-api-uri}}/calendars/{{calendar-id}}/events/{{event-id}}"
+  body:
+    type: json
+    data: |-
+      {
+        "start": {
+          "dateTime": "2026-04-29T16:15:00.000+00:00",
+          "timeZone": "America/New_York"
+        },
+        "end": {
+          "dateTime": "2026-04-29T18:15:00.000+00:00",
+          "timeZone": "America/New_York"
+        },
+        "description": "An Example event with updated description",
+        "summary": "Example Event!"
+      }
+  auth: inherit
+
+runtime:
+  variables:
+    - name: event-id
+      value: i9fp5s88rsd98l8m872t4rfupk
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

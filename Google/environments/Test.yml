@@ -20,3 +20,7 @@ variables:
     value: "{{process.env.private_key_id}}"
   - secret: true
     name: bot-token
+  - name: calendar-id
+    value: 0f94a90afc64b3e7c0fa0a8674389ae6b07714cc0683e3ec2de52d6c4880f38e@group.calendar.google.com
+  - name: calendar-api-uri
+    value: https://www.googleapis.com/calendar/v3
