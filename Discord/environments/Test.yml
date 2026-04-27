@@ -4,5 +4,5 @@ variables:
     value: https://discord.com/api
   - name: guild-id
     value: "381401643268308992"
-  - secret: true
-    name: bot-token
+  - name: bot-token
+    value: "{{process.env.BOT_TOKEN}}"
